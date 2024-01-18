@@ -7,7 +7,9 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i inrisc-radar
+npm install -S git+https://github.com/assetblox/INRISC-radarchart
+# or possibly:
+npm install -S git+https://github.com/assetblox/INRISC-radarchart#semver:^0.1.0 
 ```
 
 ## Usage
