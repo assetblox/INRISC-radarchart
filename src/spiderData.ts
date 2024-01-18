@@ -98,7 +98,7 @@ function getRadarOptions(): ChartOptions {
         },
         pointLabels: {
           color: '#0B243F',
-          backdropColor: '#fff',
+        //   backdropColor: '#fff',
           font: {
             family: 'Suisse, sans-serif',
             weight: 'bold',
