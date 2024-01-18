@@ -1,6 +1,6 @@
 # \<inrisc-radar>
 
-![img](https://gist.github.com/assets/2017300/9273131d-4f9c-4433-973d-0618b131ca43)
+![img](demo/example.png)
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
