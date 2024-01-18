@@ -1,14 +1,13 @@
-import { ChartData, ChartOptions } from 'chart.js';
-import scales from './scales';
-import capitalize from './capitalize';
+import { ChartOptions } from 'chart.js';
+import scales from './scales.js';
+import capitalize from './capitalize.js';
 
-function parseData(radardata: any) {
+function parseData(radarData: any) {
   /**
    * Accepts a JSON object with spider data and returns a ChartData object
    *
-   **/
+   * */
 
-  let converted_data: ChartData;
   let labels = [];
   let datasets = [];
 
@@ -21,17 +20,17 @@ function parseData(radardata: any) {
     'size',
   ];
 
-  for (const [p] of Object.entries(radardata[Object.keys(radardata)[0]])) {
+  for (const [p] of Object.entries(radarData[Object.keys(radarData)[0]])) {
     labels.push(p);
   }
 
-  for (const key of Object.keys(radardata)) {
+  for (const key of Object.keys(radarData)) {
     // let scalesInUse[key] = scales[key];
     const values = [];
 
     let defaultLabelKey: any;
     for (defaultLabelKey of Object.keys(defaultLabels)) {
-      values.push(radardata[key][defaultLabels[defaultLabelKey]]);
+      values.push(radarData[key][defaultLabels[defaultLabelKey]]);
     }
 
     datasets.push({
@@ -45,19 +44,19 @@ function parseData(radardata: any) {
   }
   datasets = datasets.reverse();
 
-  converted_data = {
-    labels: defaultLabels.map(function (x) {
-      return capitalize(x.replace(/_/, ' '));
-    }),
-    datasets: datasets,
+  labels = defaultLabels.map(x => capitalize(x.replace(/_/, ' ')));
+
+  const convertedData = {
+    labels,
+    datasets,
   };
-  return converted_data;
+  return convertedData;
 }
 
 function getRadarOptions(): ChartOptions {
   /**
    * Returns the options for the radar chart
-   **/
+   * */
 
   return {
     responsive: true,
@@ -98,7 +97,7 @@ function getRadarOptions(): ChartOptions {
         },
         pointLabels: {
           color: '#0B243F',
-        //   backdropColor: '#fff',
+          //   backdropColor: '#fff',
           font: {
             family: 'Suisse, sans-serif',
             weight: 'bold',
