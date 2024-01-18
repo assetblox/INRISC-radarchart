@@ -20,7 +20,7 @@
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore"
   },
   "dependencies": {
-    "chart.js": "^4.4.1",
+    "chart.js": "^4.3.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {

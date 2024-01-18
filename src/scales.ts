@@ -18,14 +18,14 @@ const scales: Scales = {
   realized: {
     color: 'rgba(167, 215, 96, 1)',
     pointColor: 'rgba(167, 215, 96, 1)',
-    backgroundColor: 'rgba(167, 215, 96, 1)',
+    backgroundColor: 'rgba(167, 215, 96, 0.1)',
     borderColor: 'rgba(167, 215, 96, 0)',
     title: 'Realized financials',
   },
   combined: {
     color: 'rgba(61, 76, 178, 0.3)',
     pointColor: 'rgba(61, 76, 178, 1)',
-    backgroundColor: 'rgba(61, 76, 178, 0.3)',
+    backgroundColor: 'rgba(61, 76, 178, 0.2)',
     borderColor: 'rgba(61, 76, 178, 0)',
     title: 'Combined with projected',
   },
