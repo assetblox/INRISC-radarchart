@@ -16,12 +16,10 @@
       import '../dist/src/inrisc-radar.js';
       import spiderData from './spider_data.json' assert { type: 'json' };
 
+      const data = JSON.stringify(spiderData);
+
       render(
-        html`
-          <inrisc-radar .spiderData=${spiderData}>
-            some light-dom
-          </inrisc-radar>
-        `,
+        html` <inrisc-radar .data=${data}> some light-dom </inrisc-radar> `,
         document.querySelector('#demo')
       );
     </script>
