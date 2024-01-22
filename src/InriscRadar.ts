@@ -33,6 +33,36 @@ export class InriscRadar extends LitElement {
       height: 100%;
       width: 100%;
     }
+
+    .debug {
+      outline: 3px dotted pink;
+    }
+
+    .wrap {
+      -webkit-text-size-adjust: 100%;
+      tab-size: 4;
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      line-height: inherit;
+      font-size: 16px;
+      font-family: Suisse, sans-serif;
+      --tw-text-opacity: 1;
+      color: rgb(11 36 63 / var(--tw-text-opacity));
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e5e7eb;
+      display: flex;
+      aspect-ratio: 1 / 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    }
+
     .labels {
       text-size-adjust: 100%;
       tab-size: 4;
@@ -84,7 +114,7 @@ export class InriscRadar extends LitElement {
       border-style: solid;
       border-color: #e5e7eb;
       margin: 0;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.0rem;
       margin-top: 2rem;
       text-align: center;
       font-size: 0.75rem;
@@ -92,7 +122,8 @@ export class InriscRadar extends LitElement {
       text-transform: uppercase;
       color: rgb(11 36 63 / 0.9);
       position: relative;
-    }`;
+    }
+  `;
 
   // This is the property definition. It expects stringified JSON data
   @property({
@@ -123,23 +154,24 @@ export class InriscRadar extends LitElement {
 
     return html`
       ${testModeWarning}
-      <div style="position: relative; height: 100%; width: auto;">
+      <div class="wrap">
+      
         <canvas id="chart" class="chart"></canvas>
-      </div>
-
+      
       <div class="legend" style="">
-      <div class="labels">
-        ${legenda.map(
-          label =>
-            html`<div
-              class="label"
-              style="background-color: ${styles[label].color}"
-            >
-              ${styles[label].title}
-            </div>`
-        )}
+        <div class="labels">
+          ${legenda.map(
+            label =>
+              html`<div
+                class="label"
+                style="background-color: ${styles[label].color}"
+              >
+                ${styles[label].title}
+              </div>`
+          )}
+        </div>
+        <p class="years">${this.usedYears}</p>
       </div>
-      <p class="years">${this.usedYears}</p>
       </div>
     `;
   }
