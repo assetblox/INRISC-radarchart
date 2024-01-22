@@ -1,5 +1,6 @@
 import { ChartOptions } from 'chart.js';
 import scales from './scales.js';
+import type { Scales } from './scales.js';
 import capitalize from './capitalize.js';
 
 function parseData(radarData: any) {
@@ -22,6 +23,12 @@ function parseData(radarData: any) {
 
   for (const [p] of Object.entries(radarData[Object.keys(radarData)[0]])) {
     labels.push(p);
+  }
+
+  // define a list of Scale
+  const scalesInUse: Scales = {};
+  for (const key of Object.keys(radarData)) {
+    scalesInUse[key] = scales[key];
   }
 
   for (const key of Object.keys(radarData)) {
@@ -49,7 +56,9 @@ function parseData(radarData: any) {
   const convertedData = {
     labels,
     datasets,
+    scalesInUse
   };
+
   return convertedData;
 }
 

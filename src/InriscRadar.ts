@@ -35,18 +35,22 @@ export class InriscRadar extends LitElement {
   `;
 
   // This is the property definition. It expects stringified JSON data
-  @property({ type: String }) data = '';
+  @property({
+    type: String,
+    hasChanged(newVal: string, oldVal: string) {
+      console.log("comparing new ", newVal, "and old", oldVal)
+      return newVal === oldVal;
+    }
+  }) data = '';
   
   @property({ type: Boolean }) testMode = false;
-  
 
   render() {
     const testModeWarning = (this.testMode === true) ? 'Graph test mode is enabled' : '';
     return html`<div style="position: relative; height: 100%; width: 100%">
         ${testModeWarning}
         <canvas id="chart"></canvas>
-      </div>
-    `;
+      </div>`;
   }
   
   async renderInriscSpider(data: any) {

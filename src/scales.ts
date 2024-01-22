@@ -9,9 +9,6 @@ type Scale = {
 
 type Scales = {
   [key: string]: Scale;
-  realized: Scale;
-  combined: Scale;
-  projection: Scale;
 };
 
 const scales: Scales = {
@@ -39,3 +36,4 @@ const scales: Scales = {
 };
 
 export default scales;
+export type { Scale, Scales };
