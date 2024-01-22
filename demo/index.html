@@ -19,7 +19,11 @@
       const data = JSON.stringify(spiderData);
 
       render(
-        html` <inrisc-radar .data=${data}> some light-dom </inrisc-radar> `,
+        html`
+          <inrisc-radar .data=${data} .usedYears="2033-2050">
+            some light-dom
+          </inrisc-radar>
+        `,
         document.querySelector('#demo')
       );
     </script>
