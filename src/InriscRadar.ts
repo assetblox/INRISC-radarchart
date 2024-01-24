@@ -12,7 +12,8 @@ import {
   LineElement,
 } from 'chart.js';
 import { parseData, getRadarOptions } from './spiderData.js';
-import spiderData from './spider_data.json' assert { type: 'json' };
+// @ts-ignore
+import testData from './testData.js';
 import styles from './styles.js';
 
 ChartJS.register(
@@ -134,13 +135,22 @@ export class InriscRadar extends LitElement {
   })
   data = '';
 
-  @property({ type: Boolean }) testMode = false;
+  @property({ type: Boolean }) testmode = false;
 
   @property({ type: String }) usedYears = '';
 
+  constructor() {
+    super();
+    console.log('InriscRadar constructor');
+  }
+
   render() {
-    const testModeWarning =
-      this.testMode === true ? 'Graph test mode is enabled' : '';
+    let testModeWarning = ''
+    if (this.testmode === true) {
+      testModeWarning = 'Graph test mode is enabled'
+    }
+
+
 
     const labels = Object.keys(JSON.parse(this.data));
     const legenda: string[] = [];
@@ -177,6 +187,7 @@ export class InriscRadar extends LitElement {
   }
 
   async renderInriscSpider(data: any) {
+    console.log("render inrisc spider")
     const parsedData = parseData(JSON.parse(data));
 
     const radarCanvas = this.renderRoot.querySelector(
@@ -199,7 +210,10 @@ export class InriscRadar extends LitElement {
   }
 
   updated() {
-    if (this.data === '') {
+    console.log("updated")
+    console.log("testmode", this.testmode)
+    if (this.data === '' || this.data === '{}') {
+      console.log("data is empty; not rendering graph")
       return;
     }
 
@@ -207,8 +221,19 @@ export class InriscRadar extends LitElement {
   }
 
   firstUpdated() {
-    if (this.testMode === true) {
-      this.renderInriscSpider(JSON.stringify(spiderData));
+    console.log("first updated")
+    console.log("testmode", this.testmode)
+    if (this.testmode === true) {
+      
+      this.data = JSON.stringify(testData);
+      // this.renderInriscSpider(JSON.stringify(testData));
     }
+  }
+}
+
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'inrisc-radar': InriscRadar;
   }
 }
